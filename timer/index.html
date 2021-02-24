@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            text-align: center;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .output {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Music will play every 60 seconds, when it plays its time to loot!</h3>
+    <div class="box">
+        <button class="start" onclick="startTimer();">Start Farming</button>
+        <button class="end" onclick="stopTimer();">Stop Farming</button>
+        <audio class="music" src="./Eli Way  Daydream.mp3"></audio>    
+    </div>
+
+    <div class="box">
+        <button class="lowvolume" onclick="low();">Low volume</button>
+        <button class="medianvolume" onclick="median();">Median volume</button>
+        <button class="highvolume" onclick="high();">High volume</button>
+    </div>
+
+    <div class="box">
+        <div class="volimedisplay"></div>
+    </div>
+
+    <script>
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var music = document.querySelector('.music');
+        var output = document.querySelector('.output');
+        var lowvolume = document.querySelector('.lowvolume');
+        var medianvolume = document.querySelector('.medianvolume');
+        var volume100 = document.querySelector('.highvolume');
+        var volimedisplay = document.querySelector('.volimedisplay');
+        var myTimer;
+
+        function startTimer() {
+            start.innerHTML = 'Started!'
+            myTimer = setInterval(playMusic, 62000);
+ 
+        }
+
+        function setVolume() {
+            music.volume = 0.1;
+        }
+
+        function playMusic() {
+            music.muted = false;
+            music.play();
+        }
+
+        function stopTimer() {
+            music.muted = true;
+            clearInterval(myTimer);
+            start.innerHTML = 'Start Farming'
+        }
+
+        function low() {
+            music.volume = 0.1;
+            console.log(music.volume);
+            volimedisplay.innerHTML= 'Current Volume: Low';
+        }
+        function median() {
+            music.volume = 0.4;
+            volimedisplay.innerHTML= 'Current Volume: Median';
+        }
+        function high() {
+            music.volume = 0.9;
+            volimedisplay.innerHTML= 'Current Volume: High';
+        }
+
+        setVolume();
+    </script>
+</body>
+
+</html>
